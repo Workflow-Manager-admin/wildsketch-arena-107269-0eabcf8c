@@ -1,0 +1,52 @@
+{
+  "collections": [
+    {
+      "name": "users",
+      "id": "users",
+      "documentId": "uid (from Firebase Auth)",
+      "fields": [
+        {"name": "username", "type": "string", "description": "Unique player-chosen username"},
+        {"name": "drawings_submitted", "type": "number", "description": "Number of drawings submitted by user"},
+        {"name": "total_guesses", "type": "number", "description": "Total guesses attempted by user"},
+        {"name": "correct_guesses", "type": "number", "description": "Number of correct guesses"},
+        {"name": "wrong_guesses", "type": "number", "description": "Number of incorrect guesses"}
+      ],
+      "example": {
+        "username": "CoolTiger99",
+        "drawings_submitted": 2,
+        "total_guesses": 14,
+        "correct_guesses": 7,
+        "wrong_guesses": 7
+      }
+    },
+    {
+      "name": "drawings",
+      "id": "drawings",
+      "documentId": "drawing_id (type: UUID, generated)",
+      "fields": [
+        {"name": "prompt", "type": "string", "description": "Assigned word to draw"},
+        {"name": "author_uid", "type": "string", "description": "UID of drawing's author"},
+        {"name": "image_url", "type": "string", "description": "Signed Firebase Storage URL to PNG image"},
+        {"name": "timestamp", "type": "timestamp", "description": "Server timestamp of creation"},
+        {"name": "guesses", "type": "array<string>", "description": "Unused in logic (legacy, may be empty)"},
+        {"name": "correct_guessers", "type": "array<string>", "description": "UIDs of users who guessed correctly"},
+        {"name": "wrong_guessers", "type": "array<string>", "description": "UIDs who guessed wrong"}
+      ],
+      "example": {
+        "prompt": "Flamingo",
+        "author_uid": "n5KvW5...",
+        "image_url": "https://firebasestorage.googleapis.com/...",
+        "timestamp": 1675012800,
+        "guesses": [],
+        "correct_guessers": ["BfYZQKx3...", "KbSt8..."],
+        "wrong_guessers": ["H2pjV5l...", "Jd5hq..."]
+      }
+    }
+  ],
+  "notes": [
+    "Leaderboard is BACKEND computed, NOT a Firestore collection.",
+    "No nested subcollections/extra fields required.",
+    "All documents and fields are indexed as Firestore defaults (see indexes.json).",
+    "Real-time is powered by backend WebSocket broadcast. No Firestore listeners necessary for frontend."
+  ]
+}

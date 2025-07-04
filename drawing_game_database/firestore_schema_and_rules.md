@@ -1,6 +1,27 @@
 # Drawing Game Firestore Database Structure & Security Rules
 
-This document describes the Firestore collections, field structure, real-time requirements, and Firebase Security Rules to support all backend and real-time features of the Doodle Finder drawing game.
+> **Version:** 1.0.0  
+> **Compatible with:** FastAPI backend at `src/api/main.py`  
+> **Last updated:** 2024-06  
+>  
+> This document describes the Firestore collections, fields, indexes, real-time requirements, and security rules for the Doodle Finder drawing game.  
+>  
+> **Use the included `firestore.collections.json` and `firestore.indexes.json` for setup and emulator usage.**
+
+---
+
+## 0. Quick Reference Setup
+
+- **Collections Defined:**  
+  - `users`
+  - `drawings`
+- **Emulator/CLI Import:**  
+  - `firestore.collections.json` (schema + example docs, for clarity)
+  - `firestore.indexes.json` (deploy to Firestore for optimal query/index support)
+- **Initialization:**  
+  - Use `setup_initialize_firestore.py` to seed dev data in emulator/test project.
+- **Backend Compatibility:**  
+  - All field names/types strictly match FastAPI backend models.
 
 ---
 ## 1. Collections & Entities

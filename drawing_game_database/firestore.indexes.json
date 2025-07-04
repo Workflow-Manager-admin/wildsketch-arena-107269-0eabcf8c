@@ -1,0 +1,44 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "drawings",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {"fieldPath": "prompt", "order": "ASCENDING"},
+        {"fieldPath": "timestamp", "order": "DESCENDING"}
+      ]
+    },
+    {
+      "collectionGroup": "drawings",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {"fieldPath": "correct_guessers", "order": "DESCENDING"},
+        {"fieldPath": "timestamp", "order": "DESCENDING"}
+      ]
+    },
+    {
+      "collectionGroup": "users",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {"fieldPath": "correct_guesses", "order": "DESCENDING"}
+      ]
+    }
+  ],
+  "fieldOverrides": [
+    {
+      "collectionGroup": "drawings",
+      "fieldPath": "guesses",
+      "arrayConfig": "CONTAINS"
+    },
+    {
+      "collectionGroup": "drawings",
+      "fieldPath": "correct_guessers",
+      "arrayConfig": "CONTAINS"
+    },
+    {
+      "collectionGroup": "drawings",
+      "fieldPath": "wrong_guessers",
+      "arrayConfig": "CONTAINS"
+    }
+  ]
+}
